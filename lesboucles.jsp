@@ -13,7 +13,7 @@
 
 <%-- Récupération de la valeur saisie par l'utilisateur --%>
 <% String valeur = request.getParameter("valeur"); %>
-    
+
 <%-- Vérification de l'existence de la valeur --%>
 <% if (valeur != null && !valeur.isEmpty()) { %>
 
@@ -21,33 +21,43 @@
     <%int cpt = Integer.parseInt(valeur); %>
     <p>
     <% for (int i = 1; i <= cpt; i++) { %>
-       <%= "*" %>
+       <%= "" %>
     <% } %>
     </p>
 
 <h2>Exercice 1 : Le carré d'étoiles</h2>
 <p>Ecrire le code afin de produire un carré d'étoile</p>
 <p>Exemple si l'utilisateur saisie le valeur 5</p>
-<p>*****</br>*****</br>*****</br>*****</br>*****</p><br>
-
-<p># Demande à l'utilisateur de saisir un nombre
-nombre = int(input("Entrez un nombre : "))
-
-# Génère un carré d'étoiles
-for i in range(nombre):
-    print("*" * nombre)
-</p>
-
+<p><% for (int i = 1; i <= cpt; i++) { %>
+       <% for (int j = 1; j <= cpt; j++) { %>
+           <%= "" %>
+       <% } %>
+    </p>
+<% } %>
 
 <h2>Exercice 2 : Triangle rectangle gauche</h2>
 <p>Ecrire le code afin de produire un triangle rectangle aligné sur la gauche</p>
 <p>Exemple si l'utilisateur saisie le valeur 5</p>
-<p>*</br>**</br>***</br>****</br>*****</p>
+<p>
+    <% for (int i = 1; i <= cpt; i++) { %>
+        <% for (int j = 1; j <= i; j++) { %>
+            <%= "" %>
+        <% } %>
+        <br/> 
+    <% } %>
+</p>
 
 <h2>Exercice 3 : Triangle rectangle inversé</h2>
 <p>Ecrire le code afin de produire un triangle rectangle aligné sur la gauche</p>
 <p>Exemple si l'utilisateur saisie le valeur 5</p>
-<p>*****</br>****</br>***</br>**</br>*</p>
+<p>
+    <% for (int i = cpt; i >= 1; i--) { %>
+        <% for (int j = 1; j <= i; j++) { %>
+            <%= "" %>
+        <% } %>
+        <br/> 
+    <% } %>
+</p>
 
 <h2>Exercice 4 : Triangle rectangle 2</h2>
 <p>Ecrire le code afin de produire un triangle rectangle aligné sur la droite</p>
