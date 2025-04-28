@@ -38,6 +38,33 @@ A = 10</br>
 B = 20</br>
 C = 15</br>
 Oui C est compris entre A et B</p>
+import java.util.Scanner;
+
+public class VerifierIntervalle {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Demander les 3 valeurs à l'utilisateur
+        System.out.print("Entrez la valeur A : ");
+        int A = scanner.nextInt();
+
+        System.out.print("Entrez la valeur B : ");
+        int B = scanner.nextInt();
+
+        System.out.print("Entrez la valeur C : ");
+        int C = scanner.nextInt();
+
+        // Vérifier si C est entre A et B (peu importe l'ordre de A et B)
+        if ((C >= A && C <= B) || (C >= B && C <= A)) {
+            System.out.println("C est compris entre A et B.");
+        } else {
+            System.out.println("C n'est pas compris entre A et B.");
+        }
+
+        scanner.close();
+    }
+}
+
 
 <h2>Exercice 2 : Pair ou Impair ?</h2>
 <p>Écrivez un programme pour vérifier si un nombre est pair ou impair en utilisant une structure if</p>
