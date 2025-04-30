@@ -1,12 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-    // Fonction de génération ASCII intégrée
+
+<%! // DÉBUT de la déclaration de la fonction Java
     String generateAsciiArt(String input) {
         input = input.toUpperCase();
         int height = 5;
         int width = 4;
 
-        // Police ASCII simple avec '#'
         String[] asciiFont = {
             // Ligne 1
             " #   ###  ###  # #  ###  ###  ###   #   ###  ###  ###  ###  ###  ###  # #  ###  ###  # #  ###  # #  ###  ###  ###  # #  ###  ###  ###  ###  ",
@@ -30,9 +29,9 @@
             if (ch >= 'A' && ch <= 'Z') {
                 index = ch - 'A';
             } else if (ch >= '0' && ch <= '9') {
-                index = 26 + (ch - '0'); // 26 lettres + 10 chiffres
+                index = 26 + (ch - '0');
             } else {
-                continue; // ignorer les caractères non supportés
+                continue;
             }
 
             for (int i = 0; i < height; i++) {
@@ -48,7 +47,9 @@
 
         return finalResult.toString();
     }
+%>
 
+<% // CODE PRINCIPAL
     String texte = request.getParameter("text");
     String result = null;
 
