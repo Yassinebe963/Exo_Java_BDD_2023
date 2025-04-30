@@ -1,0 +1,121 @@
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.Map" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%!
+    // Déclaration des motifs ASCII (partie Java)
+    private static final Map<Character, String[]> ASCII_ART_MAP = new HashMap<>();
+    
+    static {
+        ASCII_ART_MAP.put('A', new String[]{
+            "  A  ", 
+            " A A ", 
+            "AAAAA", 
+            "A   A", 
+            "A   A"
+        });
+        ASCII_ART_MAP.put('B', new String[]{
+            "BBBB ", 
+            "B   B", 
+            "BBBB ", 
+            "B   B", 
+            "BBBB "
+        });
+        // Ajoutez d'autres lettres ici...
+        ASCII_ART_MAP.put(' ', new String[]{
+            "     ", 
+            "     ", 
+            "     ", 
+            "     ", 
+            "     "
+        });
+    }
+    
+    // Méthode pour générer l'ASCII Art
+    public String generateAsciiArt(String text) {
+        if (text == null || text.isEmpty()) {
+            return "Veuillez entrer du texte";
+        }
+        
+        StringBuilder result = new StringBuilder();
+        text = text.toUpperCase();
+        
+        for (int line = 0; line < 5; line++) {
+            for (char c : text.toCharArray()) {
+                String[] letter = ASCII_ART_MAP.getOrDefault(c, ASCII_ART_MAP.get('?'));
+                if (letter != null && line < letter.length) {
+                    result.append(letter[line]);
+                } else {
+                    result.append("?????");
+                }
+            }
+            result.append("\n");
+        }
+        
+        return result.toString();
+    }
+%>
+
+<%
+    // Logique de traitement du formulaire
+    String asciiArt = "";
+    if ("POST".equals(request.getMethod())) {
+        String inputText = request.getParameter("text");
+        asciiArt = generateAsciiArt(inputText);
+    }
+%>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Générateur ASCII Art</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        pre {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+        }
+        input[type="text"] {
+            padding: 8px;
+            width: 300px;
+        }
+        button {
+            padding: 8px 15px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Générateur ASCII Art</h1>
+        
+        <form method="POST">
+            <input type="text" name="text" placeholder="Entrez votre texte ici" required>
+            <button type="submit">Générer</button>
+        </form>
+        
+        <% if (!asciiArt.isEmpty()) { %>
+            <h2>Résultat:</h2>
+            <pre><%= asciiArt %></pre>
+        <% } %>
+    </div>
+</body>
+</html>
