@@ -2,15 +2,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Résultat ASCII Art</title>
 </head>
 <body>
     <h1>Résultat ASCII Art</h1>
 
-    <p><strong>Texte original :</strong> <%= request.getAttribute("originalText") %></p>
+    <%
+        String originalText = (String) request.getAttribute("originalText");
+        String asciiArt = (String) request.getAttribute("asciiArt");
+    %>
+
+    <p><strong>Texte original :</strong> <%= originalText != null ? originalText : "Aucun texte fourni." %></p>
 
     <pre style="font-family: monospace; font-size: 14px;">
-<%= request.getAttribute("asciiArt") %>
+<%= asciiArt != null ? asciiArt : "Aucun ASCII Art généré." %>
     </pre>
 
     <a href="index.jsp">← Retour</a>
