@@ -6,8 +6,8 @@
 </head>
 <body>
     <h1>Générateur d'ASCII Art</h1>
-    <form method="post" action="AsciiArt"> <!-- Change ici pour envoyer vers la servlet -->
-        <input type="text" name="text" placeholder="Entrez du texte ici" required>
+    <form method="post" action="AsciiArt.jsp"> <!-- Corrigé ici -->
+        <input type="text" name="phrase" placeholder="Entrez du texte ici" required>
         <button type="submit">Générer</button>
     </form>
 </body>
