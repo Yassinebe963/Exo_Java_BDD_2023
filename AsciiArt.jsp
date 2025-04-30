@@ -100,6 +100,12 @@
 %>
 
 <h3>Affichage ASCII :</h3>
+<%
+    // Remplacement des caractères visibles par '#'
+    for (int i = 0; i < result.length; i++) {
+        result[i] = result[i].replaceAll("[^\\s]", "#"); // remplace tout sauf les espaces
+    }
+%>
 <pre>
 <%= result[0] %>
 <%= result[1] %>
