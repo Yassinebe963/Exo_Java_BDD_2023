@@ -4,6 +4,13 @@
 <head>
     <title>Manipulation de Chaîne en JSP</title>
     <meta charset="UTF-8">
+    <style>
+        .resultat {
+            margin: 10px 0;
+            padding: 5px;
+            border-left: 3px solid #ccc;
+        }
+    </style>
 </head>
 <body>
     <h1>Manipulation de Chaîne</h1>
@@ -27,9 +34,17 @@
         String premiereLettreMaj = capitalizeFirstLetter(bonjour);
     %>
     
-    <%-- Affichage des résultats --%>
-    <p>Chaîne originale : <strong><%= bonjour %></strong></p>
-    <p>En majuscules : <strong><%= enMajuscules %></strong></p>
-    <p>Première lettre en majuscule : <strong><%= premiereLettreMaj %></strong></p>
+    <%-- Affichage des résultats sans gras --%>
+    <div class="resultat">
+        Chaîne originale : <span><%= bonjour %></span>
+    </div>
+    
+    <div class="resultat">
+        En majuscules : <span><%= enMajuscules %></span>
+    </div>
+    
+    <div class="resultat">
+        Première lettre en majuscule : <span><%= premiereLettreMaj %></span>
+    </div>
 </body>
 </html>
