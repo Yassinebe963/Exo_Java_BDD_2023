@@ -1,34 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Manipulation de chaînes</title>
-</head>
-<body>
-    <h1>Manipulation de la chaîne "salut la compagnie"</h1>
-    
-    <%!
-        // Méthode pour mettre la première lettre en majuscule
-        public String premiereLettreMajuscule(String chaine) {
-            if (chaine == null || chaine.isEmpty()) {
-                return chaine;
-            }
-            return chaine.substring(0, 1).toUpperCase() + chaine.substring(1);
-        }
-    %>
-    
-    <%
+public class ChaineManipulation {
+
+    public static void main(String[] args) {
         String bonjour = "salut la compagnie";
         
-        // Affichage de la chaîne originale
-        out.println("<p>Chaîne originale : " + bonjour + "</p>");
+        // Afficher la chaîne en majuscules
+        System.out.println("Chaîne en majuscules: " + bonjour.toUpperCase());
         
-        // Affichage en majuscules
-        out.println("<p>En majuscules : " + bonjour.toUpperCase() + "</p>");
-        
-        // Affichage avec première lettre en majuscule
-        out.println("<p>Première lettre en majuscule : " + premiereLettreMajuscule(bonjour) + "</p>");
-    %>
-</body>
-</html>
+        // Afficher la chaîne avec première lettre en majuscule
+        System.out.println("Première lettre en majuscule: " + premiereLettreMajuscule(bonjour));
+    }
+    
+    /**
+     * Méthode qui met la première lettre d'une chaîne en majuscule
+     * @param chaine la chaîne à transformer
+     * @return la chaîne avec première lettre en majuscule
+     */
+    public static String premiereLettreMajuscule(String chaine) {
+        if (chaine == null || chaine.isEmpty()) {
+            return chaine;
+        }
+        return chaine.substring(0, 1).toUpperCase() + chaine.substring(1);
+    }
+}
